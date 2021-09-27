@@ -1,6 +1,7 @@
 package com.riad.pexelsdemoapp.views.main
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.riad.pexelsdemoapp.App
 import com.riad.pexelsdemoapp.R
 import com.riad.pexelsdemoapp.data.models.Photo
+import com.riad.pexelsdemoapp.views.photo_preview.PhotoPreviewActivity
 import kotlinx.android.synthetic.main.photo_list_item.view.*
 
 class PhotoListAdapter (private val context: Context) : RecyclerView.Adapter<RecyclerViewHolder>() {
@@ -69,13 +71,13 @@ class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.text_view_title.text = App.instance.getString(R.string.photographer, photo?.photographer)
 
         Glide.with(itemView.context)
-            .load(photo?.src?.small)
+            .load(photo?.src?.medium)
             .into(itemView.iv_photo)
 
         itemView.setOnClickListener{
-//            val intent = Intent(context, SingleMovie::class.java)
-//            intent.putExtra("id", movie?.id)
-//            context.startActivity(intent)
+            val intent = Intent(context, PhotoPreviewActivity::class.java)
+            intent.putExtra("photo_url", photo?.src?.large2x)
+            context.startActivity(intent)
         }
 
     }

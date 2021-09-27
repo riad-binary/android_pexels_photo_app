@@ -8,6 +8,6 @@ import retrofit2.http.*
 interface ApiInterface {
 
     @GET(ApiEndPoints.SEARCH)
-    suspend fun getSearchedPhotos(@Query("query") query: String): Response<SearchPhotoResponse>
+    suspend fun getSearchedPhotos(@Query("query") query: String, @Query("per_page") per_page: Int = 15): Response<SearchPhotoResponse>
 
 }

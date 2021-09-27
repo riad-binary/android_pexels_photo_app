@@ -2,7 +2,7 @@
     <string name="app_name">Pexels Demo App</string>
 
 
-    <string name="photographer">Photographer: %1$s.</string>
+    <string name="photographer">撮影者の名前: %1$s.</string>
 
     <!--    Error Messages-->
     <string name="error_no_internet">error_no_internet</string>

@@ -14,6 +14,8 @@ import kotlinx.coroutines.*
 class MainViewModel : ViewModel() {
     private val TAG: String = MainViewModel::class.java.getName()
 
+    val PER_PAGE = 30
+
     val apiService : ApiInterface = ApiClient.getClient(App.instance)
     val searchResponse =  MutableLiveData<SearchPhotoResponse>()
     val networkState  = MutableLiveData<NetworkState>()
@@ -21,6 +23,7 @@ class MainViewModel : ViewModel() {
     var job: Job? = null
 
     init {
+        Log.e(TAG, "MainViewModel init" )
         getSearchPhotos("japan")
     }
 
@@ -28,7 +31,7 @@ class MainViewModel : ViewModel() {
         networkState.postValue(NetworkState.LOADING)
         job = CoroutineScope(Dispatchers.IO).launch {
             try{
-                val response = apiService.getSearchedPhotos(query)
+                val response = apiService.getSearchedPhotos(query, PER_PAGE)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         networkState.postValue(NetworkState.LOADED)

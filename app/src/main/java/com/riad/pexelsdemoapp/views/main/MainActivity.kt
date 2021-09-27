@@ -78,4 +78,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        search_view.clearFocus()
+    }
+
 }

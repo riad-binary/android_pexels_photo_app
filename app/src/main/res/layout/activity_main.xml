@@ -15,7 +15,7 @@
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="Search Here"
+            android:queryHint="検索"
             android:layout_margin="5dp"
             android:iconifiedByDefault="false"
             />
