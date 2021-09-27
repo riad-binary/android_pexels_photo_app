@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.riad.pexelsdemoapp.R
 
 class MainActivity : AppCompatActivity() {
+    private val TAG: String = MainActivity::class.java.getName()
 
     private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
@@ -13,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel.getPost()
+        viewModel.getSearchPhotos()
     }
 }

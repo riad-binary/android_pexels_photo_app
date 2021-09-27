@@ -22,7 +22,7 @@ object ApiClient {
         okHttpClient = OkHttpClient.Builder()
             .addInterceptor(ConnectivityInterceptor(context))
             .addInterceptor(interceptor)
-//            .addInterceptor(BasicAuthInterceptor(ApiEndPoints.AUTH_USERNAME, ApiEndPoints.AUTH_PASSWORD))
+            .addInterceptor(TokenAuthInterceptor(ApiEndPoints.API_TOKEN))
             .connectionSpecs(
                 Arrays.asList(
 //                ConnectionSpec.CLEARTEXT,
@@ -41,9 +41,7 @@ object ApiClient {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(ApiEndPoints.BASE_URL)
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-//            .addConverterFactory(SimpleXmlConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
     }

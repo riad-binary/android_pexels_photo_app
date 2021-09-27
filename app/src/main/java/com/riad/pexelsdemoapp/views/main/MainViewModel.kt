@@ -8,22 +8,22 @@ import com.riad.pexelsdemoapp.data.api.ApiInterface
 import kotlinx.coroutines.*
 
 class MainViewModel : ViewModel() {
-
+    private val TAG: String = MainViewModel::class.java.getName()
     val apiService : ApiInterface = ApiClient.getClient(App.instance)
     var job: Job? = null
 
     init {
-        Log.e("rrr", "MainViewModel init")
+        Log.e(TAG, "MainViewModel init")
     }
 
-    fun getPost() {
+    fun getSearchPhotos() {
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = apiService.getPost()
+            val response = apiService.getSearchedPhotos("nature")
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    Log.e("rrr", "response.isSuccessful response:" + response.body())
+                    Log.e(TAG, "response.isSuccessful response:" + response.body())
                 } else {
-                    Log.e("rrr", "response.error response:" + response.message())
+                    Log.e(TAG, "response.error response:" + response.message())
                 }
             }
         }

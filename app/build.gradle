@@ -39,12 +39,12 @@ android {
             signingConfig signingConfigs.debug
             applicationIdSuffix ".dev"
 
-            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'BASE_URL', '"https://api.pexels.com/v1/"'
         }
 
         product {
             dimension "env"
-            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'BASE_URL', '"https://api.pexels.com/v1/"'
         }
 
 
