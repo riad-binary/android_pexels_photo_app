@@ -23,7 +23,7 @@ class NetworkState(val status: Status, val msg: String) {
 
             LOADING = NetworkState(Status.RUNNING, "Running")
 
-            ERROR = NetworkState(Status.FAILED, App.instance.getString(R.string.error_network_failed))
+            ERROR = NetworkState(Status.FAILED, App.instance.getString(R.string.error_server))
 
             NO_CONNECTION = NetworkState(Status.FAILED, App.instance.getString(R.string.error_no_internet))
 
